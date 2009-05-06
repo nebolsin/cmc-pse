@@ -1,0 +1,28 @@
+<h1>Editing algorithm</h1>
+
+<% form_for(@algorithm, :html => { :multipart => true}) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </p>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :sources %><br />
+    <%= f.file_field :sources %>
+  </p>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @algorithm %> |
+<%= link_to 'Back', algorithms_path %>

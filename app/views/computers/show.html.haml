@@ -1,0 +1,22 @@
+%p
+  %b Name:
+  = @computer.name
+
+%p
+  %b Host:
+  = @computer.host
+
+%p
+  %b Description:
+  = @computer.description
+
+%p
+  %b Through host:
+  = @computer.through_host
+
+%p
+  %b Working directory:
+  = @computer.working_directory
+
+== #{link_to 'Edit', edit_computer_path(@computer)} | #{link_to 'Back', computers_path}
+

@@ -1,0 +1,25 @@
+%h1 Listing computers
+
+%table
+  %tr
+    %th Name
+    %th Host
+    %th Description
+    %th Through Host
+    %th Working Directory
+  - for computer in @computers
+    %tr
+      %td= computer.name
+      %td= computer.host
+      %td= computer.description
+      %td= computer.through_host
+      %td= computer.working_directory
+      %td= link_to 'Show', computer
+      %td= link_to 'Edit', edit_computer_path(computer)
+      %td= link_to 'Destroy', computer, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Queue', queue_computer_path(computer)
+      %td= link_to 'Test', test_computer_path(computer)
+
+%br
+
+%p= link_to 'New computer', new_computer_path

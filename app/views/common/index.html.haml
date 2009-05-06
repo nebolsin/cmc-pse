@@ -1,0 +1,14 @@
+%p== Здравствуйте, #{link_to current_user.name, current_user}. #{link_to "Выход", signout_path}.
+
+%p= link_to "Управление компьютерами", computers_path
+%p= link_to "Управление алгоритмами", algorithms_path
+%p= link_to "Загрузить данные", new_data_file_path
+%p= link_to "Запустить вычисления", "/"
+
+%hr
+
+- unless current_user.data_files.blank?
+  %p У вас есть следующие файлы:
+  %ul
+    - current_user.data_files.each do |data|
+      %li== #{link_to data.name, data} (#{link_to data.content.original_filename, data.content.path})

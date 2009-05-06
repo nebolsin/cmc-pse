@@ -1,0 +1,26 @@
+<h1>Listing algorithms</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>User</th>
+  </tr>
+
+<% for algorithm in @algorithms %>
+  <tr>
+    <td><%=h algorithm.code %></td>
+    <td><%=h algorithm.name %></td>
+    <td><%=h algorithm.description %></td>
+    <td><%=h algorithm.user_id %></td>
+    <td><%= link_to 'Show', algorithm %></td>
+    <td><%= link_to 'Edit', edit_algorithm_path(algorithm) %></td>
+    <td><%= link_to 'Destroy', algorithm, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New algorithm', new_algorithm_path %>

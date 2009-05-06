@@ -1,0 +1,12 @@
+%h2== Список заданий вычислителя #{@computer.name} на момент #{Time.now}
+%table
+  %thead
+    %th Идентификатор
+    %th Пользователь
+    %th Состояние
+  %tbody
+    - @queue_infos.each do |queue_info|
+      %tr
+        %td= queue_info[:id]
+        %td= queue_info[:user]
+        %td= queue_info[:status]

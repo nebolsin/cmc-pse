@@ -1,0 +1,22 @@
+<p>
+  <b>Name:</b>
+  <%=h @data_file.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @data_file.description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= link_to @data_file.user.name, @data_file.user %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= link_to @data_file.content.original_filename, @data_file.content.url %>
+</p>
+
+<%= link_to 'Edit', edit_data_file_path(@data_file) %> |
+<%= link_to 'Back', data_files_path %>

@@ -1,0 +1,44 @@
+<p>
+  <b>Code:</b>
+  <%=h @algorithm.code %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%=h @algorithm.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @algorithm.description %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= link_to @algorithm.user.name, @algorithm.user %>
+</p>
+
+<p>
+  <b>Sources:</b>
+  <%= link_to @algorithm.sources_file_name, @algorithm.sources.url %>
+</p>
+
+<%= link_to 'Edit', edit_algorithm_path(@algorithm) %> |
+<%= link_to 'Back', algorithms_path %>
+
+<% unless @algorithm.computers.blank? %>
+  <p>Алгоритм установлен на следующие компьютеры:</p>
+  <ul>
+    <% @algorithm.computers.each do |computer| %>
+      <li><%= link_to computer.name, computer %> (<%= link_to "удалить", uninstall_algorithm_path(@algorithm, {:computer_id => computer.id}), {:method => :put}%>)</li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% unless @available_computers.blank? %>
+  <p>Установить алгоритм на компьютер:</p>
+  <% form_tag(install_algorithm_path(@algorithm), :method => :put) do%>
+    <%= collection_select(:algorithm, :computer_ids, @available_computers, :id, :name) %>
+    <%= submit_tag "Установить" %>
+  <% end %>
+<% end %>

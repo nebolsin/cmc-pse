@@ -1,0 +1,24 @@
+<h1>Listing data files</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>User</th>
+  </tr>
+
+<% for data_file in @data_files %>
+  <tr>
+    <td><%=h data_file.name %></td>
+    <td><%=h data_file.description %></td>
+    <td><%= link_to data_file.user.name, data_file.user %></td>
+    <td><%= link_to 'Show', data_file %></td>
+    <td><%= link_to 'Edit', edit_data_file_path(data_file) %></td>
+    <td><%= link_to 'Destroy', data_file, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New data_file', new_data_file_path %>

@@ -1,0 +1,29 @@
+%h1 Editing computer
+
+- form_for(@computer) do |f|
+  = f.error_messages
+
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :host
+    %br
+    = f.text_field :host
+  %p
+    = f.label :description
+    %br
+    = f.text_area :description
+  %p
+    = f.label :through_host
+    %br
+    = f.text_field :through_host
+  %p
+    = f.label :working_directory
+    %br
+    = f.text_field :working_directory
+  %p
+    = f.submit "Update"
+
+== #{link_to 'Show', @computer} | #{link_to 'Back', computers_path}
