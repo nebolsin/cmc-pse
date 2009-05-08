@@ -21,9 +21,9 @@ test:
   pool: 5
   timeout: 5000
 
-test:
+production:
   adapter: postgresql
-  database: pse_testing
+  database: pse
   host: localhost
   username: pse
   password: 123qwe
