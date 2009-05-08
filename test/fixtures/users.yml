@@ -1,0 +1,48 @@
+# == Schema Information
+# Schema version: 20090506170628
+#
+# Table name: users
+#
+#  id                 :integer         not null, primary key
+#  name               :string(100)     default("")
+#  email              :string(100)
+#  salt               :string(40)
+#  created_at         :datetime
+#  updated_at         :datetime
+#  encrypted_password :string(128)
+#  token              :string(128)
+#  token_expires_at   :datetime
+#  email_confirmed    :boolean         not null
+#
+
+
+quentin:
+  id:                        1
+  login:                     quentin
+  email:                     quentin@example.com
+  salt:                      356a192b7913b04c54574d18c28d46e6395428ab # SHA1('0')
+  crypted_password:          fc22e08b9aaf4c4778d50fad38643f416d4989b5 # 'monkey'
+  created_at:                <%= 5.days.ago.to_s :db  %>
+  remember_token_expires_at: <%= 1.days.from_now.to_s %>
+  remember_token:            77de68daecd823babbb58edb1c8e14d7106e83bb
+      
+aaron:
+  id:                        2
+  login:                     aaron
+  email:                     aaron@example.com
+  salt:                      da4b9237bacccdf19c0760cab7aec4a8359010b0 # SHA1('1')
+  crypted_password:          32fcc7aba3b0daea0a171dfd200744ad1fe3ebe7 # 'monkey'
+  created_at:                <%= 1.days.ago.to_s :db %>
+  remember_token_expires_at: 
+  remember_token:            
+
+
+old_password_holder:
+  id:                        3
+  login:                     old_password_holder
+  email:                     salty_dog@example.com
+  salt:                      7e3041ebc2fc05a40c60028e2c4901a81035d3cd
+  crypted_password:          00742970dc9e6319f8019fd54864d3ea740f04b1 # test
+  created_at:                <%= 1.days.ago.to_s :db %>
+
+

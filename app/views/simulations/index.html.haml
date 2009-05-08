@@ -1,0 +1,17 @@
+%h1 Список запусков
+
+%table
+  %tr
+    %th ID
+    %th Компонент
+    %th Компьютер
+    %th Пользователь
+    %th Статус
+
+  - for simulation in @simulations
+    %tr
+      %td= simulation.id
+      %td= link_to simulation.component.name, simulation.component
+      %td= link_to simulation.computer.name, simulation.computer
+      %td= link_to simulation.user.name, simulation.user
+      %td= simulation.status_name

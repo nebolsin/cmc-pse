@@ -1,0 +1,30 @@
+# == Schema Information
+# Schema version: 20090309210721
+#
+# Table name: algorithms
+#
+#  id                   :integer         not null, primary key
+#  code                 :string(255)
+#  name                 :string(255)
+#  description          :text
+#  user_id              :integer
+#  created_at           :datetime
+#  updated_at           :datetime
+#  sources_file_name    :string(255)
+#  sources_content_type :string(255)
+#  sources_file_size    :integer
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  name: MyString
+  description: MyString
+  user_id: 1
+
+two:
+  code: MyString
+  name: MyString
+  description: MyString
+  user_id: 1

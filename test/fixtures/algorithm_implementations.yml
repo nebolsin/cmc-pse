@@ -1,0 +1,39 @@
+# == Schema Information
+# Schema version: 20090319140725
+#
+# Table name: algorithm_implementations
+#
+#  id                   :integer         not null, primary key
+#  name                 :string(255)
+#  description          :text
+#  algorithm_id         :integer
+#  language_id          :integer
+#  user_id              :integer
+#  sources_file_name    :string(255)
+#  sources_content_type :string(255)
+#  sources_file_size    :integer
+#  created_at           :datetime
+#  updated_at           :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  algorithm_id: 1
+  language_id: 1
+  name: MyString
+  description: MyText
+  user_id: 1
+  sources_file_name: MyString
+  sources_content_type: MyString
+  sources_file_size: 1
+
+two:
+  algorithm_id: 1
+  language_id: 1
+  name: MyString
+  description: MyText
+  user_id: 1
+  sources_file_name: MyString
+  sources_content_type: MyString
+  sources_file_size: 1

@@ -1,4 +1,5 @@
 class ComputersController < ApplicationController
+  before_filter :authenticate
 
   def test
     computer = Computer.find(params[:id])

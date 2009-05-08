@@ -1,0 +1,35 @@
+%p
+  %b Название:
+  =h @component.name
+
+%p
+  %b Описание:
+  =h @component.description
+
+%p
+  %b Автор:
+  = link_to @component.user.name, @component.user
+
+%p
+  %b Исходный код:
+  = link_to @component.sources_file_name, @component.sources.url
+
+= link_to 'Редактировать', edit_component_path(@component)
+|
+= link_to 'Назад', components_path
+
+- unless @component.computers.blank?
+  %p Компонент установлен на следующие компьютеры:
+  %ul
+    - @component.computers.each do |computer|
+      %li
+        = link_to computer.name, computer
+        == (#{link_to "удалить", uninstall_component_path(@component, {:computer_id => computer.id}), {:method => :put}})
+        == — #{link_to "запустить", simulate_component_path(@component, {:computer_id => computer.id}), {:method => :put}} 
+
+
+- unless @available_computers.blank?
+  %p Установить компонент на компьютер:
+  - form_tag(install_component_path(@component), :method => :put) do
+    = collection_select(:component, :computer_ids, @available_computers, :id, :name)
+    = submit_tag "Установить"

@@ -1,0 +1,33 @@
+# == Schema Information
+# Schema version: 20090506170628
+#
+# Table name: components
+#
+#  id                   :integer         not null, primary key
+#  name                 :string(255)
+#  description          :text
+#  user_id              :string(255)
+#  sources_file_name    :string(255)
+#  sources_content_type :string(255)
+#  sources_file_size    :integer
+#  created_at           :datetime
+#  updated_at           :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  description: MyText
+  user_id: MyString
+  sources_file_name: MyString
+  sources_content_type: MyString
+  sources_file_size: 1
+
+two:
+  name: MyString
+  description: MyText
+  user_id: MyString
+  sources_file_name: MyString
+  sources_content_type: MyString
+  sources_file_size: 1

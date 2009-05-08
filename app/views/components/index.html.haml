@@ -1,0 +1,18 @@
+%h1 Список компонентов
+
+%table
+  %tr
+    %th Название
+    %th Автор
+
+  - for component in @components
+    %tr
+      %td= h component.name
+      %td= h component.user.name
+      %td= link_to 'Информация', component
+      %td= link_to 'Редактирование', edit_component_path(component)
+      %td= link_to 'Удалить', component, :confirm => 'Вы уверены?', :method => :delete
+
+%br
+
+= link_to 'Новый компонент', new_component_path

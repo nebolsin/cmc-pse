@@ -1,0 +1,36 @@
+# == Schema Information
+# Schema version: 20090309130349
+#
+# Table name: computers
+#
+#  id                :integer         not null, primary key
+#  name              :string(255)
+#  host              :string(255)
+#  description       :text
+#  throughHost       :string(255)
+#  workingDirectory  :string(255)
+#  taskSubmitCommand :string(255)
+#  viewQueueCommand  :string(255)
+#  created_at        :datetime
+#  updated_at        :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  host: MyString
+  description: MyText
+  throughHost: MyString
+  workingDirectory: MyString
+  taskSubmitCommand: MyString
+  viewQueueCommand: MyString
+
+two:
+  name: MyString
+  host: MyString
+  description: MyText
+  throughHost: MyString
+  workingDirectory: MyString
+  taskSubmitCommand: MyString
+  viewQueueCommand: MyString

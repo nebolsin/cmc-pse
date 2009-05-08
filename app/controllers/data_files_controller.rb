@@ -1,5 +1,5 @@
 class DataFilesController < ApplicationController
-  before_filter :login_required
+  before_filter :authenticate
 
   # GET /data_files
   # GET /data_files.xml

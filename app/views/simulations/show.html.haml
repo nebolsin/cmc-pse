@@ -1,0 +1,31 @@
+%p
+  %b Компонент:
+  = link_to @simulation.component.name, @simulation.component
+
+%p
+  %b Компьютер:
+  = link_to @simulation.computer.name, @simulation.computer
+
+%p
+  %b Автор:
+  = link_to @simulation.user.name, @simulation.user
+
+%p
+  %b Дата начала:
+  =h @simulation.created_at
+
+
+%p
+  %b Статус:
+  = @simulation.status_name
+
+- if @simulation.is_completed?
+  - if @simulation.result.blank?
+    %p= link_to 'Загрузить результат', retrieve_result_simulation_path(@simulation), {:method => :put}
+  - else
+    %p= link_to 'Просмотреть результат', @simulation.result.content.url
+
+
+= link_to 'Обновить', update_status_simulation_path(@simulation)
+|
+= link_to 'Назад', simulations_path

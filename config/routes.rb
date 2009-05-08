@@ -1,7 +1,13 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :languages
 
-  map.resources :languages
+  map.resources :components, :member => {
+      :install => :put, :uninstall => :put, :simulate => :put
+  }
+
+  map.resources :simulations, :member => {
+      :cancel => :put, :update_status => :get, :retrieve_result => :put
+  }
 
   map.resources :data_files
 

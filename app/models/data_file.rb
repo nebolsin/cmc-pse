@@ -15,6 +15,9 @@
 #
 
 class DataFile < ActiveRecord::Base
-  has_attached_file :content, :path => ":rails_root/public/system/data/:id/:basename.:extension"
+  has_attached_file :content,
+      :path => ":rails_root/public/system/data/:id/:basename.:extension",
+      :url => "/system/data/:id/:basename.:extension"
+  
   belongs_to :user
 end

@@ -1,0 +1,33 @@
+# == Schema Information
+# Schema version: 20090506170628
+#
+# Table name: executions
+#
+#  id           :integer         not null, primary key
+#  user_id      :integer
+#  component_id :integer
+#  computer_id  :integer
+#  job_id       :string(255)
+#  status       :string(255)
+#  result_id    :integer
+#  created_at   :datetime
+#  updated_at   :datetime
+#
+
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 1
+  component_id: 1
+  computer_id: 1
+  job_id: MyString
+  status: MyString
+  result_id: 1
+
+two:
+  user_id: 1
+  component_id: 1
+  computer_id: 1
+  job_id: MyString
+  status: MyString
+  result_id: 1

@@ -5,8 +5,16 @@
     %th Пользователь
     %th Состояние
   %tbody
-    - @queue_infos.each do |queue_info|
+    - if @queue_infos.blank?
       %tr
-        %td= queue_info[:id]
-        %td= queue_info[:user]
-        %td= queue_info[:status]
+        %td{:colspan => 3} Нет активных заданий
+    - else
+      - @queue_infos.each do |queue_info|
+        %tr
+          %td= queue_info[:id]
+          %td= queue_info[:user]
+          %td= queue_info[:status_name]
+          - unless queue_info[:simulation].blank?
+            %td= link_to "Имитация ##{queue_info[:simulation].id}", queue_info[:simulation] 
+            - if queue_info[:simulation].user == current_user
+              %td= link_to 'отменить задание', cancel_simulation_path(queue_info[:simulation]), {:method => :put}

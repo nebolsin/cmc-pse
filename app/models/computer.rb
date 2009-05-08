@@ -17,12 +17,33 @@ class Computer < ActiveRecord::Base
   has_and_belongs_to_many :algorithms
   
   def init
-    executeRemoteCommand('init')
+    execute_remote_command('init')
   end
 
-  def install(algorithm)
-    copyFile(algorithm.sources.path)
-    executeRemoteCommand('installAlgorithm', algorithm.code)
+  def install_component(component)
+    copy_file(component.sources.path)
+    execute_remote_command('install_component', [component.id])
+  end
+
+  def uninstall_component(component)
+    execute_remote_command('uninstall_component', [component.id])
+  end
+
+  def simulate(simulation)
+    job_id = execute_remote_command('simulate', [simulation.id, simulation.component.id])
+    simulation.job_id = job_id.strip.gsub(/"/,'')
+    simulation.save
+  end
+
+  def cancel_job(job_id)
+    execute_remote_command('cancel_job', [job_id])
+  end
+
+  def retrieve_result(simulation)
+    execute_remote_command('retrieve_result', [simulation.id])
+    result = retrieve_file("#{simulation.id}.out")
+    error = retrieve_file("#{simulation.id}.err")
+    [result, error]
   end
 
   STATES = {
@@ -36,25 +57,27 @@ class Computer < ActiveRecord::Base
   }
 
   def queue
-    textResults = executeRemoteCommand('queue')
+    text_results = execute_remote_command('queue')
     results = []
-    textResults.split(/\s/).each do |taskString|
-      taskInfo = taskString.split(/!/)
-      results << {:id => taskInfo[0], :user => taskInfo[1], :status => STATES[taskInfo[2]]}
+    unless text_results =~ /.*There is currently no job status to report.*/
+      text_results.split(/\s/).each do |task_string|
+        task_info = task_string.split(/!/)
+        results << {:id => task_info[0], :user => task_info[1], :status => task_info[2], :status_name => STATES[task_info[2]], :simulation => Simulation.find_by_job_id(task_info[0])}
+      end
     end
     results
   end
 
   def test
-    copyFile('README')
+    copy_file('README')
   end
 
-  def executeRemoteCommand(command, options = '')
-    executeRemoteRawCommand("bin/#{command} #{options}")
+  def execute_remote_command(command, options = [])
+    execute_remote_raw_command("bin/#{command} #{options.join(' ')}")
   end
 
-  def executeRemoteRawCommand(remoteCommand)
-    command = "ssh #{host} #{remoteCommand}"
+  def execute_remote_raw_command(remote_command)
+    command = "ssh #{host} #{remote_command}"
     unless through_host.blank?
       command = "ssh #{through_host} #{command}"
     end
@@ -64,7 +87,7 @@ class Computer < ActiveRecord::Base
     return result
   end
 
-  def copyFile(path)
+  def copy_file(path)
     name = path.split('/')[-1]
     if through_host.blank?
       `scp #{path} #{host}:inbox/`
@@ -72,5 +95,16 @@ class Computer < ActiveRecord::Base
       `scp #{path} #{through_host}:pse/`
       `ssh #{through_host} scp pse/#{name} #{host}:inbox/ `
     end
+  end
+  
+  def retrieve_file(name)
+    if through_host.blank?
+      `scp #{host}:outbox/#{name} #{RAILS_ROOT}/public/`
+    else
+      `ssh #{through_host} scp #{host}:outbox/#{name} pse/outbox/`
+      `scp #{through_host}:pse/outbox/#{name} #{RAILS_ROOT}/public/`
+    end
+
+    File.new("#{RAILS_ROOT}/public/#{name}")
   end
 end

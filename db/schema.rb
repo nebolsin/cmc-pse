@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090506145411) do
+ActiveRecord::Schema.define(:version => 20090506175634) do
 
   create_table "algorithm_implementations", :force => true do |t|
     t.string   "name"
@@ -41,6 +41,22 @@ ActiveRecord::Schema.define(:version => 20090506145411) do
     t.integer "computer_id"
   end
 
+  create_table "components", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "user_id"
+    t.string   "sources_file_name"
+    t.string   "sources_content_type"
+    t.integer  "sources_file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "components_computers", :force => true do |t|
+    t.integer "component_id"
+    t.integer "computer_id"
+  end
+
   create_table "computers", :force => true do |t|
     t.string   "name"
     t.string   "host"
@@ -69,8 +85,18 @@ ActiveRecord::Schema.define(:version => 20090506145411) do
     t.datetime "updated_at"
   end
 
+  create_table "simulations", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "component_id"
+    t.integer  "computer_id"
+    t.string   "job_id"
+    t.string   "status"
+    t.integer  "result_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", :force => true do |t|
-    t.string   "login",              :limit => 40
     t.string   "name",               :limit => 100, :default => ""
     t.string   "email",              :limit => 100
     t.string   "salt",               :limit => 40
@@ -84,7 +110,6 @@ ActiveRecord::Schema.define(:version => 20090506145411) do
 
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["id", "token"], :name => "index_users_on_id_and_token"
-  add_index "users", ["login"], :name => "index_users_on_login", :unique => true
   add_index "users", ["token"], :name => "index_users_on_token"
 
 end

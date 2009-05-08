@@ -1,0 +1,23 @@
+%h1 Редактирование компонента
+
+- form_for(@component, :html => { :multipart => true}) do |f|
+  = f.error_messages
+
+  %p
+    = f.label :name
+    %br
+    = f.text_field :name
+  %p
+    = f.label :description
+    %br
+    = f.text_area :description
+  %p
+    = f.label :sources
+    %br
+    = f.file_field :sources
+  %p
+    = f.submit "Сохранить"
+
+= link_to 'Информация', @component
+|
+= link_to 'Назад', components_path
