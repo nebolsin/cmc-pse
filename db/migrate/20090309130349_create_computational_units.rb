@@ -1,6 +1,6 @@
 class CreateComputationalUnits < ActiveRecord::Migration
   def self.up
-    create_table :computers do |t|
+    create_table :computational_units do |t|
       t.string :name
       t.string :host
       t.text :description
@@ -14,6 +14,6 @@ class CreateComputationalUnits < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :computers
+    drop_table :computational_units
   end
 end
