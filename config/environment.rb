@@ -70,7 +70,7 @@ Rails::Initializer.run do |config|
   config.action_mailer.default_charset = "utf-8"
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.sendmail_settings = {:arguments => "/usr/sbin/sendmail -i -t -f #{DO_NOT_REPLY} -F prophotos.ru"}
+  config.action_mailer.sendmail_settings = {:arguments => "/usr/sbin/sendmail -i -t -f #{DO_NOT_REPLY}"}
 
 
   # Use the database for sessions instead of the cookie-based default,

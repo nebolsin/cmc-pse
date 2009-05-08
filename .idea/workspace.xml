@@ -8,6 +8,7 @@
     <list default="true" readonly="true" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/pse.iml" afterPath="$PROJECT_DIR$/.idea/pse.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/languages_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/languages_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/common/index.html.haml" afterPath="$PROJECT_DIR$/app/views/common/index.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20090309210037_rename_computational_units_to_computers.rb" afterPath="$PROJECT_DIR$/db/migrate/20090309210037_rename_computational_units_to_computers.rb" />
@@ -24,6 +25,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environment.rb" afterPath="$PROJECT_DIR$/config/environment.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20090506145411_modify_users_remove_old_columns.rb" afterPath="$PROJECT_DIR$/db/migrate/20090506145411_modify_users_remove_old_columns.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20090309130349_create_computational_units.rb" afterPath="$PROJECT_DIR$/db/migrate/20090309130349_create_computational_units.rb" />
     </list>
     <ignored path="pse.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,15 +43,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="queue.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/computers/queue.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="91" selection-start="556" selection-end="556" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="data_file.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/models/data_file.rb">
           <provider selected="true" editor-type-id="text-editor">
@@ -71,7 +64,16 @@
       <file leaf-file-name="environment.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/environment.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="19" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.0">
+            <state line="72" column="102" selection-start="3585" selection-end="3585" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="production.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="18" selection-start="102" selection-end="102" vertical-scroll-proportion="0.023904383">
               <folding />
             </state>
           </provider>
@@ -104,10 +106,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="20090309130349_create_computational_units.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="20090309130349_create_computational_units.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/migrate/20090309130349_create_computational_units.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="16" column="35" selection-start="398" selection-end="398" vertical-scroll-proportion="0.19123507">
+            <state line="19" column="0" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -1098,13 +1100,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/simulation.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="57" column="49" selection-start="1227" selection-end="1227" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/simulations/show.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="25" column="71" selection-start="573" selection-end="573" vertical-scroll-proportion="0.0">
@@ -1175,13 +1170,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/environment.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="34" column="19" selection-start="1627" selection-end="1627" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/algorithms_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -1205,7 +1193,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20090309130349_create_computational_units.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="16" column="35" selection-start="398" selection-end="398" vertical-scroll-proportion="0.19123507">
+        <state line="19" column="0" selection-start="409" selection-end="409" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environment.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="72" column="102" selection-start="3585" selection-end="3585" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/environments/production.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="18" selection-start="102" selection-end="102" vertical-scroll-proportion="0.023904383">
           <folding />
         </state>
       </provider>
