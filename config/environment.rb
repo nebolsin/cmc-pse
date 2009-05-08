@@ -31,7 +31,8 @@ Rails::Initializer.run do |config|
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
 
-  config.gem "thoughtbot-clearance", :lib => "clearance", :source => "http://gems.github.com", :version => "0.6.2" 
+  config.gem "thoughtbot-clearance", :lib => "clearance", :source => "http://gems.github.com", :version => "0.6.2"
+  config.gem "haml"
 
   # Only load the plugins named here, in the order given. By default, all plugins 
   # in vendor/plugins are loaded in alphabetical order.
