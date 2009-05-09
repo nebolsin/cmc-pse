@@ -1,6 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :languages
 
+  map.resources :users, :only => [:edit, :update]
+  
   map.resources :components, :member => {
       :install => :put, :uninstall => :put, :simulate => :put
   }

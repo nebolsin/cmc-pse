@@ -1,5 +1,6 @@
 %p== Здравствуйте, #{link_to current_user.name, current_user}. #{link_to "Выход", signout_path}.
 
+%p= link_to "Редактирование профиля", edit_user_path(current_user)
 %p= link_to "Управление компьютерами", computers_path
 %p= link_to "Управление компонентами", components_path
 %p= link_to "Загрузить данные", new_data_file_path
