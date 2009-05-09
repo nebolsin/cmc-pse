@@ -47,13 +47,13 @@ class Computer < ActiveRecord::Base
   end
 
   STATES = {
-      'R' => 'Выполняется',
-      'ST' =>  'Запускается',
-      'P' => 'Начат процесс запуска',
-      'I' => 'Ожидает запуска',
-      'H' => 'Приостановлена пользователем',
-      'NQ' => 'Не готово к запуску',
-      'C' => 'Завершено'
+      'R' => '–í—ã–ø–æ–ª–Ω—è–µ—Ç—Å—è',
+      'ST' =>  '–ó–∞–ø—É—Å–∫–∞–µ—Ç—Å—è',
+      'P' => '–ù–∞—á–∞—Ç –ø—Ä–æ—Ü–µ—Å—Å –∑–∞–ø—É—Å–∫–∞',
+      'I' => '–û–∂–∏–¥–∞–µ—Ç –∑–∞–ø—É—Å–∫–∞',
+      'H' => '–ü—Ä–∏–æ—Å—Ç–∞–Ω–æ–≤–ª–µ–Ω–∞ –ø–æ–ª—å–∑–æ–≤–∞—Ç–µ–ª–µ–º',
+      'NQ' => '–ù–µ –≥–æ—Ç–æ–≤–æ –∫ –∑–∞–ø—É—Å–∫—É',
+      'C' => '–ó–∞–≤–µ—Ä—à–µ–Ω–æ'
   }
 
   def queue
@@ -72,12 +72,17 @@ class Computer < ActiveRecord::Base
     copy_file('README')
   end
 
+  def full_host_name
+    return "#{username}@#{host}" unless username.blank?
+    host
+  end
+
   def execute_remote_command(command, options = [])
     execute_remote_raw_command("bin/#{command} #{options.join(' ')}")
   end
 
   def execute_remote_raw_command(remote_command)
-    command = "ssh #{host} #{remote_command}"
+    command = "ssh #{full_host_name} #{remote_command}"
     unless through_host.blank?
       command = "ssh #{through_host} #{command}"
     end
@@ -90,18 +95,18 @@ class Computer < ActiveRecord::Base
   def copy_file(path)
     name = path.split('/')[-1]
     if through_host.blank?
-      `scp #{path} #{host}:inbox/`
+      `scp #{path} #{full_host_name}:inbox/`
     else
       `scp #{path} #{through_host}:pse/`
-      `ssh #{through_host} scp pse/#{name} #{host}:inbox/ `
+      `ssh #{through_host} scp pse/#{full_host_name} #{host}:inbox/ `
     end
   end
   
   def retrieve_file(name)
     if through_host.blank?
-      `scp #{host}:outbox/#{name} #{RAILS_ROOT}/public/`
+      `scp #{full_host_name}:outbox/#{name} #{RAILS_ROOT}/public/`
     else
-      `ssh #{through_host} scp #{host}:outbox/#{name} pse/outbox/`
+      `ssh #{through_host} scp #{full_host_name}:outbox/#{name} pse/outbox/`
       `scp #{through_host}:pse/outbox/#{name} #{RAILS_ROOT}/public/`
     end
 
