@@ -34,7 +34,7 @@ namespace :deploy do
   task :update, :roles => :app do
     run "cd #{deploy_to} && git pull && git submodule update"
     # flush
-    glue_code
+    # glue_code
   end
 
   desc "Glue assets"
