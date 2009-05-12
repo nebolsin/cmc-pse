@@ -1,0 +1,25 @@
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T2A]{fontenc}
+\RequirePackage[russian]{babel}
+\RequirePackage{geometry}
+\RequirePackage[parfill]{parskip}
+\RequirePackage{graphicx}
+\RequirePackage{amsmath, amssymb}
+\RequirePackage{epstopdf}
+\RequirePackage{booktabs}
+\RequirePackage{verbatim}
+\RequirePackage{rotating}
+                             
+\renewcommand{\@makecaption}[2]{% 
+\vspace{\abovecaptionskip}% 
+\sbox{\@tempboxa}{\small #1. #2} 
+\ifdim \wd\@tempboxa >\hsize 
+\centering\small #1. #2\par 
+\else 
+\global\@minipagefalse 
+\hbox to \hsize {\hfil \small #1. #2\hfil}% 
+\fi 
+\vspace{\belowcaptionskip}}     
+
+
+
